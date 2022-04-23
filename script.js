@@ -40,7 +40,28 @@ function convertTimecodeToSeconds(timecodeString)
 
 function convertSecondsToTimecode(timecodeNumber)
 {
-    
+    let hours = Math.floor(timecodeNumber/3600);
+    timecodeNumber = timecodeNumber - hours * 3600;
+
+    let minutes = Math.floor(timecodeNumber/60);
+    timecodeNumber = timecodeNumber - minutes * 60;
+
+    let seconds = Math.floor(timecodeNumber);
+    timecodeNumber = timecodeNumber - seconds;
+
+    let milliseconds = Math.round(timecodeNumber * 1000 );
+
+    hours = hours.toString();
+    minutes = minutes.toString();
+    seconds = seconds.toString();
+    milliseconds = milliseconds.toString();
+
+    hours = hours.padStart(2, "0");
+    minutes = minutes.padStart(2, "0");
+    seconds = seconds.padStart(2, "0");
+    milliseconds = milliseconds.padStart(3, "0");
+
+    let timecodeString = hours + ":" + minutes + ":" + seconds + "," + milliseconds;
     return timecodeString;
 }
 

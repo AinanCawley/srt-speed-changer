@@ -7,8 +7,8 @@ function takeStringAndReturnAdjustedString(srtString, speedRatioNumber)
 
     while( (timecodeMatches = timecodeRegex.exec(srtString)) !== null )
     {
-        adjustedSrtString = replaceAt( srtString, timecodeMatches[0], timecodeAdjust(timecodeMatches[0]), timecodeMatches.index, (timecodeMatches.index + 12) )
-    
+        adjustedSrtString = replaceAt( adjustedSrtString, timecodeMatches[0], timecodeAdjust(timecodeMatches[0], speedRatioNumber), timecodeMatches.index, (timecodeMatches.index + 12) )
+        
     }
 
     

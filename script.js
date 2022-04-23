@@ -5,13 +5,15 @@ function takeStringAndReturnAdjustedString(srtString, speedRatioNumber)
     let timecodeMatches;
     let adjustedSrtString = srtString;
 
+    let debugCounter = 0; /*DEBUG*/
+
     while( (timecodeMatches = timecodeRegex.exec(srtString)) !== null )
     {
         adjustedSrtString = replaceAt( adjustedSrtString, timecodeMatches[0], timecodeAdjust(timecodeMatches[0], speedRatioNumber), timecodeMatches.index, (timecodeMatches.index + 12) )
-        
+        debugCounter++;/*DEBUG*/
     }
 
-    
+    console.log(debugCounter);/*DEBUG*/
 
     return adjustedSrtString;
 }
@@ -27,11 +29,6 @@ function convertTimecodeToSeconds(timecodeString)
     let minutes = parseInt( timecodeString.slice(3,5) );
     let seconds = parseInt( timecodeString.slice(6,8) );
     let milliseconds = parseInt( timecodeString.slice(9,12) );
-
-    /* console.log(hours);
-    console.log(minutes);
-    console.log(seconds);
-    console.log(milliseconds); DEBUGGING */
 
     let timecodeNumber = hours*3600 + minutes*60 + seconds + milliseconds/1000;
 
@@ -49,7 +46,8 @@ function convertSecondsToTimecode(timecodeNumber)
     let seconds = Math.floor(timecodeNumber);
     timecodeNumber = timecodeNumber - seconds;
 
-    let milliseconds = Math.round(timecodeNumber * 1000 );
+    let milliseconds = Math.floor(timecodeNumber * 1000 );
+
 
     hours = hours.toString();
     minutes = minutes.toString();

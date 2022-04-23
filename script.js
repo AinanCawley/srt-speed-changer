@@ -1,12 +1,13 @@
 function takeStringAndReturnAdjustedString(srtString, speedRatioNumber)
 {
-    const timecodeRegex = /(\d\d:\d\d:\d\d,\d\d\d)/mg;
+    const timecodeRegex = /\d\d:\d\d:\d\d,\d\d\d/mg;
 
-    let timecodeArray = srtString.match(timecodeRegex);
-    
-    let adjustedTimecodeArray = timecodeArray;
+    let timecodeMatches;
 
-    timecodeArray.forEach( (element, index) => adjustedTimecodeArray[index] = timecodeAdjust(element) );
+    while( (timecodeMatches = timecodeRegex.exec(srtString)) !== null )
+    {
+        
+    }
 
     
 

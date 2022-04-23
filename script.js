@@ -1,6 +1,16 @@
 function takeStringAndReturnAdjustedString(srtString, speedRatioNumber)
 {
-    return adjustedSrtString;
+    const timecodeRegex = /(\d\d:\d\d:\d\d,\d\d\d)/mg;
+
+    let timecodeArray = srtString.match(timecodeRegex);
+    
+    let adjustedTimecodeArray = timecodeArray;
+
+    timecodeArray.forEach( (element, index) => adjustedTimecodeArray[index] = timecodeAdjust(element) );
+
+    
+
+    /* return adjustedSrtString; */
 }
 
 function convertTimecodeToSeconds(timecodeString)
@@ -11,4 +21,9 @@ function convertTimecodeToSeconds(timecodeString)
 function convertSecondsToTimecode(timecodeNumber)
 {
     return timecodeString;
+}
+
+function timecodeAdjust(timecodeString)
+{
+    return adjustedTimecodeString;
 }

@@ -107,10 +107,15 @@ button.addEventListener('click', () =>
 
     if(subtitles)
     {
-        let downloadBlob = new Blob([subtitles]);
-        let blobURL = window.URL.createObjectURL(downloadBlob);
-        downloadLink.href = blobURL;
-        downloadLinkArea.replaceChildren(downloadLink);
+        if(speedRatioNumber)
+        {
+            let adjustedSubtitles = takeStringAndReturnAdjustedString(subtitles, speedRatioNumber);
+            let downloadBlob = new Blob([adjustedSubtitles]);
+            let blobURL = window.URL.createObjectURL(downloadBlob);
+            downloadLink.href = blobURL;
+            downloadLinkArea.replaceChildren();
+            downloadLinkArea.appendChild(downloadLink);
+        }
     }
 });
 

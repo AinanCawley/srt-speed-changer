@@ -1,13 +1,14 @@
-function takeStringAndReturnAdjustedString(srtString, speedRatioNumber)
+function takeStringAndReturnAdjustedString(srtString, speedRatioNumber) //speedRatioNumber >1 slows down subtitles. <1 speeds them up.
 {
     const timecodeRegex = /\d\d:\d\d:\d\d,\d\d\d/mg;
 
     let timecodeMatches;
-    let adjustedSrtString = srtString;
+    let adjustedSrtString = srtString; //Make a copy of the original srt file. Adjustments will be made on the copy
 
-    while( (timecodeMatches = timecodeRegex.exec(srtString)) !== null )
+    while( (timecodeMatches = timecodeRegex.exec(srtString)) !== null ) //Goes through all timecodes in the original srt
     {
         adjustedSrtString = replaceAt( adjustedSrtString, timecodeMatches[0], timecodeAdjust(timecodeMatches[0], speedRatioNumber), timecodeMatches.index, (timecodeMatches.index + 12) )
+        //^^Where there is a timecode in the original srt, adjust the timecode in the copy.
     }
 
     return adjustedSrtString;

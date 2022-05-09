@@ -5,15 +5,10 @@ function takeStringAndReturnAdjustedString(srtString, speedRatioNumber)
     let timecodeMatches;
     let adjustedSrtString = srtString;
 
-    let debugCounter = 0; /*DEBUG*/
-
     while( (timecodeMatches = timecodeRegex.exec(srtString)) !== null )
     {
         adjustedSrtString = replaceAt( adjustedSrtString, timecodeMatches[0], timecodeAdjust(timecodeMatches[0], speedRatioNumber), timecodeMatches.index, (timecodeMatches.index + 12) )
-        debugCounter++;/*DEBUG*/
     }
-
-    console.log(debugCounter);/*DEBUG*/
 
     return adjustedSrtString;
 }

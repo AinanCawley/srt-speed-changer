@@ -71,10 +71,10 @@ const fileReader = new FileReader();
 
 fileReader.addEventListener("load", () => 
 {
-    subtitles = fileReader.result;
+    subtitles = fileReader.result; //subtitles variable is changed everytime the user changes the file-selection
 });
 
-function updateSubtitles()
+function updateSubtitles() //This function is called on by "onchange" of the file input in index.html
 {
     let [subtitleFile] = document.querySelector('input[type=file]').files;
     if(subtitleFile)
@@ -82,3 +82,36 @@ function updateSubtitles()
         fileReader.readAsText(subtitleFile);
     }
 }
+
+let speedRatioNumber;
+
+const button = document.getElementById('button');
+
+const downloadLinkArea = document.getElementById("downloadLinkArea");
+const downloadLink = document.createElement('a');
+downloadLink.download = "adjustedSubtitle.srt"; //TODO: change to a name based on the source .srt filename
+downloadLink.innerText = "adjustedSubtitle.srt";
+
+button.addEventListener('click', () =>
+{
+    const pattern = /\d*\.?\d+/g;
+    let patternMatch = speed.value.match(pattern);
+    if(patternMatch[0]===speed.value)
+    {
+        speedRatioNumber = speed.value;
+    }
+    else
+    {
+        //don't update speedRatioNumber as the user's input isn't a number
+    }
+
+    if(subtitles)
+    {
+        let downloadBlob = new Blob([subtitles]);
+        let blobURL = window.URL.createObjectURL(downloadBlob);
+        downloadLink.href = blobURL;
+        downloadLinkArea.replaceChildren(downloadLink);
+    }
+});
+
+

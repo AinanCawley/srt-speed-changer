@@ -66,4 +66,19 @@ function timecodeAdjust(timecodeString, speedRatioNumber)
 
 //DOM STUFF
 
-let subtitleForm = document.getElementById("subtitleForm");
+let subtitles = "";
+const fileReader = new FileReader();
+
+fileReader.addEventListener("load", () => 
+{
+    subtitles = fileReader.result;
+});
+
+function updateSubtitles()
+{
+    let [subtitleFile] = document.querySelector('input[type=file]').files;
+    if(subtitleFile)
+    {
+        fileReader.readAsText(subtitleFile);
+    }
+}

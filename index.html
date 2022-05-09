@@ -6,19 +6,16 @@
 
     <body>
         <div>
-            <form id="subtitleForm" enctype="multipart/form-data" method="post">
+
                 <div>
                     <label for="subtitle">Choose .srt file: </label>
-                    <input type="file" id="subtitle" accept=".srt">
+                    <input type="file" id="subtitle" accept=".srt" onchange="updateSubtitles()">
                 </div>
-                <div>
+                    <div>
                     <labe for="speed">Choose speed adjustment ratio. Values larger than 1 slow down the subtitles. Values smaller than 1 speed up the subtitles</labe>
                     <input type="text" id="speed" title="Value must be a number. Decimal point is to be indicated by a period" pattern="\d*\.?\d+">
                 </div>
-                <div>
-                    <input type="submit" value="Process the .srt file" formaction="">
-                </div>
-            </form>
+
         </div>
         <div>
             <!--Adjusted file should appear here-->

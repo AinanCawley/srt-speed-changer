@@ -63,3 +63,7 @@ function timecodeAdjust(timecodeString, speedRatioNumber)
 {
     return convertSecondsToTimecode(speedRatioNumber*convertTimecodeToSeconds(timecodeString));
 }
+
+//DOM STUFF
+
+let subtitleForm = document.getElementById("subtitleForm");

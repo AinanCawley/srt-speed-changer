@@ -6,24 +6,25 @@
 
     <body>
         <div>
-
-                <div>
-                    <label for="subtitle">Choose .srt file: </label>
-                    <input type="file" id="subtitle" accept=".srt" onchange="updateSubtitles()">
-                </div>
+            <div>
+                <label for="subtitle">Choose .srt file: </label>
+                <input type="file" id="subtitle" accept=".srt" onchange="updateSubtitles()">
+            </div>
             <form onsubmit="return false">
                 <div>
                     <labe for="speed">Choose speed adjustment ratio. Values larger than 1 slow down the subtitles. Values smaller than 1 speed up the subtitles</labe>
                     <input type="text" id="speed" title="Value must be a number. Decimal point is to be indicated by a period" pattern="\d*\.?\d+">
                 </div>
                 <div>
-                    <button id="button">Enter value</button>
+                    <button id="button">Create/update download link</button>
                 </div>
             </form>
-
         </div>
         <div id="downloadLinkArea">
             <!--Adjusted file should appear here-->
+        </div>
+        <div>
+            <p>View the source code on <a href="https://github.com/AinanCawley/srt-speed-changer">github!</a></p>
         </div>
     </body>
 </html>
